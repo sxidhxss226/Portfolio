@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – Hacker Style</title>
+
+<style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial,sans-serif;}
+    body {background:#0d0d0d; color:#fff; line-height:1.5;}
+    header {text-align:center; padding:80px 20px; position:relative;}
+    header img {
+        width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px;
+        box-shadow: 0 0 20px #09f, 0 0 40px #09f;
+        transition: 0.5s;
+    }
+    header img:hover {transform: scale(1.1) rotate(5deg);}
+    h1 {font-size:2.5rem; margin-bottom:10px;}
+    p {color:#ccc; font-size:1rem;}
+    .section {padding:50px 20px; max-width:1100px; margin:auto;}
+    .section h2 {font-size:2rem; margin-bottom:30px; border-left:5px solid #09f; padding-left:10px; color:#09f;}
+    .projects, .services, .testimonials {display:grid; gap:20px;}
+    .projects {grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));}
+    .services {grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));}
+    .testimonials {grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));}
+    .card {background:#1a1a1a; padding:20px; border-radius:10px; transition:0.3s; opacity:0; transform: translateY(30px);}
+    .card:hover {transform: translateY(-5px); background:#222;}
+    .project-img {width:100%; height:150px; background:#333; border-radius:10px; margin-bottom:10px;}
+    .testimonial {background:#1a1a1a; padding:20px; border-radius:10px; font-style:italic; opacity:0; transform: translateY(30px);}
+    form {display:flex; flex-direction:column; gap:15px; max-width:500px; margin-top:20px;}
+    input, textarea {padding:12px; border-radius:8px; border:none; outline:none; background:#222; color:#fff;}
+    button {padding:12px; background:#09f; border:none; color:#fff; font-size:1rem; border-radius:8px; cursor:pointer; transition:0.3s;}
+    button:hover {background:#08c;}
+    .whatsapp-btn {display:inline-block; background:#25D366; padding:12px 20px; border-radius:8px; color:#fff; font-weight:bold; text-decoration:none; margin-top:20px;}
+    @keyframes fadeInUp {0%{opacity:0; transform:translateY(30px);} 100%{opacity:1; transform:translateY(0);}}
+</style>
+</head>
+
+<body>
+
+<header><img src="https://images.pexels.com/photos/8441244/pexels-photo-8441244.jpeg?auto=compress&cs=tinysrgb&w=400&h=400" 
+     alt="Masked Hacker" 
+     style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px; box-shadow:0 0 20px #09f;">
+    <h1>Hi, I'm R4GE</h1>
+    <p>Web Designer & Developer.</p>
+</header>
+
+<section class="section">
+    <h2>Projects</h2>
+    <div class="projects" id="projects"></div>
+</section>
+
+<section class="section">
+    <h2>Services</h2>
+    <div class="services">
+        <div class="card" style="animation: fadeInUp 0.6s forwards; animation-delay: 0.1s;">
+            <h3>Web Design</h3>
+            <p>Modern UI/UX with dark neon aesthetics.</p>
+        </div>
+        <div class="card" style="animation: fadeInUp 0.6s forwards; animation-delay: 0.2s;">
+            <h3>Web Development</h3>
+            <p>Fast, responsive websites.</p>
+        </div>
+        <div class="card" style="animation: fadeInUp 0.6s forwards; animation-delay: 0.3s;">
+            <h3>Branding</h3>
+            <p>Logos, banners, and full brand identity.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+        <div class="testimonial" style="animation: fadeInUp 0.6s forwards; animation-delay:0.1s;">“Amazing work! Professional & fast.”</div>
+        <div class="testimonial" style="animation: fadeInUp 0.6s forwards; animation-delay:0.2s;">“Exactly what I wanted & more!”</div>
+        <div class="testimonial" style="animation: fadeInUp 0.6s forwards; animation-delay:0.3s;">“Clean design, perfect communication.”</div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Contact</h2>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="4" placeholder="Your Message"></textarea>
+        <button>Send Message</button>
+    </form>
+    <a class="whatsapp-btn" href="https://wa.me/255796819436" target="_blank">Chat on WhatsApp</a>
+</section>
+
+<script>
+    // ====== Dynamic Projects (Edit only here) ======
+    const myProjects = [
+        {name:"Project One", desc:"My first awesome website", link:"https://sessionbot.vercel.app/"},
+        {name:"Project Two", desc:"Online store project", link:"https://swift-logistics-two.vercel.app/index.html"},
+        {name:"Project Three", desc:"Responsive landing page", link:"https://landingpage-4ffz.vercel.app/"}
+    ];
+
+    const container = document.getElementById("projects");
+
+    myProjects.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.style.animation = `fadeInUp 0.6s forwards`;
+        div.style.animationDelay = `${0.1*index}s`;
+        div.innerHTML = `<div class="project-img"></div>
+                         <h3>${p.name}</h3>
+                         <p>${p.desc}</p>
+                         <a href="${p.link}" class="btn small">View Project</a>`;
+        container.appendChild(div);
+    });
+</script>
+
+</body>
+  </html>
